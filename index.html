@@ -38,10 +38,10 @@
     .sponsor-toggle{width:52px;height:52px;border:1px solid var(--line);border-radius:50%;background:#fff;display:grid;place-items:center;gap:4px;cursor:pointer;transition:.22s;padding:14px;position:relative;z-index:102}
     .sponsor-toggle:hover{transform:translateY(-2px);box-shadow:var(--softshadow)}
     .sponsor-toggle span{display:block;width:18px;height:2px;border-radius:999px;background:#111111}
-    .sponsor-drawer{position:absolute;right:0;top:calc(100% + 12px);min-width:270px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:8px;box-shadow:var(--shadow);z-index:1000}
+    .sponsor-drawer{position:absolute;right:0;top:calc(100% + 12px);min-width:270px;height:auto;overflow:visible;background:#fff;border:1px solid var(--line);border-radius:18px;padding:8px;box-shadow:var(--shadow);z-index:1000}
     .sponsor-drawer[hidden]{display:none}
-    .sponsor-link{display:block;width:100%;min-height:46px;border:0;background:#ffffff;border-radius:12px;padding:.82rem .9rem;text-align:left;font-family:inherit;font-size:.95rem;line-height:1.2;font-weight:900;color:#111111;white-space:nowrap;cursor:pointer}
-    .sponsor-link::before{content:attr(data-label);display:block;color:#111111}
+    .sponsor-link{display:block;width:100%;min-height:46px;border:0;background:#ffffff;border-radius:12px;padding:.82rem .9rem;text-align:left;font-family:inherit;font-size:.95rem;line-height:1.2;font-weight:900;color:#111111;white-space:nowrap;cursor:pointer;visibility:visible;opacity:1}
+    .sponsor-link-text{display:block!important;color:#111111!important;font-size:.95rem!important;line-height:1.2!important;font-weight:900!important;visibility:visible!important;opacity:1!important;white-space:nowrap!important}
     .sponsor-link:hover{background:#f1ebe4}
     .menu{display:none;border:1px solid var(--line);background:var(--surface);border-radius:14px;padding:.6rem .85rem;font-weight:850;cursor:pointer}
     .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;border:1px solid transparent;border-radius:999px;padding:.82rem 1.1rem;font-weight:850;text-decoration:none;cursor:pointer;transition:.22s;background:#111111;color:white}
@@ -260,7 +260,7 @@
         <div class="sponsor-nav">
           <button class="sponsor-toggle" type="button" aria-expanded="false" aria-controls="sponsorDrawer" aria-label="Open collaborators and sponsors menu"><span></span><span></span><span></span></button>
           <div class="sponsor-drawer" id="sponsorDrawer" hidden>
-            <button class="sponsor-link" id="openSponsors" type="button" data-label="Collaborators & Sponsors" aria-label="Open Collaborators and Sponsors"></button>
+            <button class="sponsor-link" id="openSponsors" type="button" aria-label="Open Collaborators and Sponsors"><span class="sponsor-link-text">Collaborators &amp; Sponsors</span></button>
           </div>
         </div>
         <a class="cv-chip" href="assets/Pavanbabu-Arjunamahanthi-CV.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open CV">CV</a>
@@ -437,6 +437,7 @@
     sponsorToggle?.addEventListener('click',e=>{e.stopPropagation();const open=sponsorDrawer.hidden;sponsorDrawer.hidden=!open;sponsorToggle.setAttribute('aria-expanded',open)});
     document.addEventListener('click',e=>{if(sponsorNav&&!sponsorNav.contains(e.target))closeSponsorDrawer()});
     document.getElementById('openSponsors')?.addEventListener('click',()=>{closeSponsorDrawer();sponsorModal?.showModal()});
+    sponsorDrawer?.addEventListener('click',e=>{if(e.target.closest('#openSponsors'))return;closeSponsorDrawer();sponsorModal?.showModal()});
     sponsorModal?.querySelector('.sponsor-close')?.addEventListener('click',()=>sponsorModal.close());
     sponsorModal?.addEventListener('click',e=>{const rect=sponsorModal.getBoundingClientRect(); if(e.clientX<rect.left||e.clientX>rect.right||e.clientY<rect.top||e.clientY>rect.bottom) sponsorModal.close();});
     const reveals=document.querySelectorAll('.reveal'); const rio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.12}); reveals.forEach(e=>rio.observe(e));
