@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -40,6 +40,15 @@
     .sponsor-toggle span{display:block;width:18px;height:2px;border-radius:999px;background:#111111}
     .menu{display:none;border:1px solid var(--line);background:var(--surface);border-radius:14px;padding:.6rem .85rem;font-weight:850;cursor:pointer}
     .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;border:1px solid transparent;border-radius:999px;padding:.82rem 1.1rem;font-weight:850;text-decoration:none;cursor:pointer;transition:.22s;background:#111111;color:white}
+    .btn-icon{width:1.05em;height:1.05em;flex:0 0 auto;display:inline-block}
+    .btn-icon.brand{fill:currentColor}
+    .btn-icon.line{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+    .icon-email{color:#ea4335}
+    .icon-phone{color:#188038}
+    .icon-scholar{color:#4285f4}
+    .icon-linkedin{color:#0a66c2}
+    .icon-github{color:#181717}
+    .icon-doc{color:#7a5a36}
     .btn:hover{transform:translateY(-2px);box-shadow:0 16px 36px rgba(34,30,28,.18)}
     .btn.secondary{background:rgba(255,255,255,.96);color:var(--ink);border-color:var(--line)}
     .btn.accent{background:var(--accent);color:white}
@@ -255,7 +264,6 @@
     @media(max-width:980px){.logos{grid-template-columns:1fr}.role-grid{grid-template-columns:1fr 1fr}.logo-card{min-height:190px}.logo-card img{object-position:center center;margin:auto}}
     @media(max-width:980px){.hero{grid-template-columns:1fr;padding:24px}.hero-copy{padding:10px 0 0}.profile-card{padding:0}.profile-top{grid-auto-rows:240px}}
     @media(max-width:640px){.role-grid{grid-template-columns:1fr}.heading-link{width:34px;height:34px;font-size:1rem}.hero{padding:18px;border-radius:24px}.hero .hero-copy,.hero .profile-card{padding:0}.hero .profile-top{grid-template-columns:1fr;grid-auto-rows:auto}.hero .portrait{width:100%;height:auto;aspect-ratio:1/1;max-width:260px;margin:auto}.hero .profile-summary{min-height:220px}.hero .focus-grid{grid-template-columns:1fr}}
-    
   </style>
 </head>
 <body id="top">
@@ -282,14 +290,14 @@
         <h1>Metrology and Inspection-driven semiconductor packaging engineer.</h1>
         <p class="lead">I work on inspecting advanced packages and interconnects using optical, Electron microscopy, and acoustic imaging, etc, and have hands-on experience in cleanroom processing and defect analytics to provide practical insight for hybrid bonding and glass interposers towards electronic packaging reliability.</p>
         <div class="hero-actions">
-          <a class="btn accent glow-action" href="mailto:pavanbabuarjunamahanthi@gmail.com">Email me</a>
-          <a class="btn secondary glow-action" target="_blank" rel="noopener" href="https://www.linkedin.com/in/pavanbabu/">View my LinkedIn</a>
-          <a class="btn secondary glow-action" target="_blank" rel="noopener" href="https://scholar.google.com/citations?user=-tJN2NQAAAAJ&hl=en">View my Google Scholar</a><a class="btn secondary" target="_blank" rel="noopener" href="https://github.com/Pavanbabu-014">GitHub</a>
+          <a class="btn accent glow-action" href="mailto:pavanbabuarjunamahanthi@gmail.com"><svg class="btn-icon line icon-email" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v12H4z"></path><path d="m4 7 8 6 8-6"></path></svg>Email me</a>
+          <a class="btn secondary glow-action" target="_blank" rel="noopener" href="https://www.linkedin.com/in/pavanbabu/"><svg class="btn-icon brand icon-linkedin" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.34V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.26 2.37 4.26 5.45v6.29h.03zM5.32 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.1 20.45H3.54V9H7.1v11.45z"></path></svg>View my LinkedIn</a>
+          <a class="btn secondary glow-action" target="_blank" rel="noopener" href="https://scholar.google.com/citations?user=-tJN2NQAAAAJ&hl=en"><svg class="btn-icon brand icon-scholar" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0 0 9.5l5.24 4.27C6.45 11.25 9.02 9.5 12 9.5s5.55 1.75 6.76 4.27L24 9.5 12 0zm0 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"></path></svg>View my Google Scholar</a><a class="btn secondary" target="_blank" rel="noopener" href="https://github.com/Pavanbabu-014"><svg class="btn-icon brand icon-github" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5A11.5 11.5 0 0 0 8.36 22.9c.58.1.79-.25.79-.56v-2.02c-3.22.7-3.9-1.39-3.9-1.39-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.71.08-.71 1.16.08 1.78 1.2 1.78 1.2 1.04 1.77 2.72 1.26 3.38.96.11-.75.41-1.26.74-1.55-2.57-.29-5.27-1.28-5.27-5.72 0-1.26.45-2.3 1.19-3.11-.12-.29-.52-1.47.11-3.07 0 0 .97-.31 3.18 1.19A11.1 11.1 0 0 1 12 6.03c.98 0 1.96.13 2.88.39 2.2-1.5 3.17-1.19 3.17-1.19.63 1.6.24 2.78.12 3.07.74.81 1.19 1.85 1.19 3.11 0 4.45-2.71 5.43-5.29 5.72.42.36.79 1.07.79 2.16v3.05c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5z"></path></svg>GitHub</a>
         </div>
         <div class="availability" aria-label="Availability and fit">
           <span class="pill"><span class="dot"></span> Gainesville, FL</span>
           <span class="pill">Open to relocation</span>
-          <a class="pill glow-action" href="assets/Pavanbabu-Arjunamahanthi-Resume.pdf" target="_blank" rel="noopener noreferrer">Find my Resume</a>
+          <a class="pill glow-action" href="assets/Pavanbabu-Arjunamahanthi-Resume.pdf" target="_blank" rel="noopener noreferrer"><svg class="btn-icon line icon-doc" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l4 4v14H7z"></path><path d="M14 3v5h5"></path><path d="M9.5 13h5"></path><path d="M9.5 17h5"></path></svg>Find my Resume</a>
         </div>
       </div>
       <aside class="profile-card reveal" aria-label="Profile card">
@@ -367,7 +375,7 @@
     </section>
 
     <section class="wrap" id="publications">
-      <div class="section-head reveal"><div><p class="eyebrow">Publications</p><h2>Searchable research output.<a class="heading-link" target="_blank" rel="noopener noreferrer" href="https://scholar.google.com/citations?user=-tJN2NQAAAAJ&hl=en" aria-label="Open Google Scholar profile">↗</a></h2></div><input class="search" id="pubSearch" type="search" placeholder="Search publications, topics, or venues..." aria-label="Search publications"></div>
+      <div class="section-head reveal"><div><p class="eyebrow">Publications</p><h2>Searchable research output.<a class="heading-link" target="_blank" rel="noopener noreferrer" href="https://scholar.google.com/citations?user=-tJN2NQAAAAJ&hl=en" aria-label="Open Google Scholar profile">?</a></h2></div><input class="search" id="pubSearch" type="search" placeholder="Search publications, topics, or venues..." aria-label="Search publications"></div>
       <div class="pub-list reveal" id="pubList">
         <div class="pub-category">
           <h3>First authored articles</h3>
@@ -451,13 +459,13 @@
         <h3>Semiconductor process, FA, metrology, or packaging R&amp;D</h3>
         <p>Available for technical discussions, collaboration, internships-to-industry transitions, and relocation-aligned semiconductor opportunities.</p>
         <div class="contact-modal-actions">
-          <a class="btn accent glow-action" href="mailto:pavanbabuarjunamahanthi@gmail.com">Email</a>
-          <a class="btn secondary" href="tel:+13529992062">Call +1 352 999 2062</a>
-          <a class="btn secondary glow-action" target="_blank" rel="noopener" href="https://www.linkedin.com/in/pavanbabu/">View my LinkedIn</a>
-          <a class="btn secondary glow-action" target="_blank" rel="noopener" href="https://scholar.google.com/citations?user=-tJN2NQAAAAJ&hl=en">View my Google Scholar</a>
-          <a class="btn secondary glow-action" target="_blank" rel="noopener noreferrer" href="assets/Pavanbabu-Arjunamahanthi-CV.pdf">View my CV</a>
-          <a class="btn secondary" target="_blank" rel="noopener" href="https://github.com/Pavanbabu-014">GitHub</a>
-          <button class="btn secondary copy-email" type="button">Copy email</button>
+          <a class="btn accent glow-action" href="mailto:pavanbabuarjunamahanthi@gmail.com"><svg class="btn-icon line icon-email" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v12H4z"></path><path d="m4 7 8 6 8-6"></path></svg>Email</a>
+          <a class="btn secondary" href="tel:+13529992062"><svg class="btn-icon line icon-phone" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.32 1.77.59 2.61a2 2 0 0 1-.45 2.11L8 9.69a16 16 0 0 0 6.31 6.31l1.25-1.25a2 2 0 0 1 2.11-.45c.84.27 1.71.47 2.61.59A2 2 0 0 1 22 16.92z"></path></svg>Call +1 352 999 2062</a>
+          <a class="btn secondary glow-action" target="_blank" rel="noopener" href="https://www.linkedin.com/in/pavanbabu/"><svg class="btn-icon brand icon-linkedin" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.34V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.26 2.37 4.26 5.45v6.29h.03zM5.32 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.1 20.45H3.54V9H7.1v11.45z"></path></svg>View my LinkedIn</a>
+          <a class="btn secondary glow-action" target="_blank" rel="noopener" href="https://scholar.google.com/citations?user=-tJN2NQAAAAJ&hl=en"><svg class="btn-icon brand icon-scholar" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0 0 9.5l5.24 4.27C6.45 11.25 9.02 9.5 12 9.5s5.55 1.75 6.76 4.27L24 9.5 12 0zm0 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"></path></svg>View my Google Scholar</a>
+          <a class="btn secondary glow-action" target="_blank" rel="noopener noreferrer" href="assets/Pavanbabu-Arjunamahanthi-CV.pdf"><svg class="btn-icon line icon-doc" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l4 4v14H7z"></path><path d="M14 3v5h5"></path><path d="M9.5 13h5"></path><path d="M9.5 17h5"></path></svg>View my CV</a>
+          <a class="btn secondary" target="_blank" rel="noopener" href="https://github.com/Pavanbabu-014"><svg class="btn-icon brand icon-github" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5A11.5 11.5 0 0 0 8.36 22.9c.58.1.79-.25.79-.56v-2.02c-3.22.7-3.9-1.39-3.9-1.39-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.71.08-.71 1.16.08 1.78 1.2 1.78 1.2 1.04 1.77 2.72 1.26 3.38.96.11-.75.41-1.26.74-1.55-2.57-.29-5.27-1.28-5.27-5.72 0-1.26.45-2.3 1.19-3.11-.12-.29-.52-1.47.11-3.07 0 0 .97-.31 3.18 1.19A11.1 11.1 0 0 1 12 6.03c.98 0 1.96.13 2.88.39 2.2-1.5 3.17-1.19 3.17-1.19.63 1.6.24 2.78.12 3.07.74.81 1.19 1.85 1.19 3.11 0 4.45-2.71 5.43-5.29 5.72.42.36.79 1.07.79 2.16v3.05c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5z"></path></svg>GitHub</a>
+          <button class="btn secondary copy-email" type="button"><svg class="btn-icon line icon-email" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v12H4z"></path><path d="m4 7 8 6 8-6"></path></svg>Copy email</button>
         </div>
       </div>
     </div>
