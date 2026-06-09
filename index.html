@@ -206,8 +206,15 @@
     .contact-modal-card{margin-top:18px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(135deg,#ffffff,#eae5dc);padding:24px;box-shadow:var(--softshadow)}
     .contact-modal-card p{color:var(--muted);margin:8px 0 0}
     .contact-modal-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+    .permissions-dialog{width:min(760px,92vw)}
+    .permissions-modal{padding:30px}
+    .permissions-card{margin-top:18px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(135deg,#ffffff,#f3eee6);padding:24px;box-shadow:var(--softshadow)}
+    .permissions-card p{color:var(--muted);font-size:1.02rem;line-height:1.75;margin:0 0 14px}
+    .permissions-card strong{color:#111111}
     .footer{padding:26px 0;color:var(--muted);font-size:.9rem}
     .footer .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+    .footer-copy{display:grid;gap:6px;max-width:920px}
+    .footer-permissions{font-weight:750;color:#4d443d}
     .visitor-badge{height:20px;width:auto}
     .to-top{position:fixed;right:18px;bottom:18px;width:46px;height:46px;border:1px solid var(--line);border-radius:50%;background:#20242a;color:white;font-weight:950;opacity:0;transform:translateY(8px);transition:.2s;cursor:pointer}
     .to-top.show{opacity:1;transform:none}
@@ -439,7 +446,7 @@
       </div>
     </section>
   </main>
-  <footer class="footer"><div class="wrap"><span>&copy; <span id="year"></span> Pavanbabu Arjunamahanthi &middot; Semiconductor Packaging, Metrology and Failure Analysis Portfolio.</span><img class="visitor-badge" src="https://hits.sh/Pavanbabu-014.github.io.svg?label=Visitors&color=3f3833&labelColor=ebe4da" alt="Visitor count"></div></footer>
+  <footer class="footer"><div class="wrap"><div class="footer-copy"><span>&copy; <span id="year"></span> Pavanbabu Arjunamahanthi &middot; Semiconductor Packaging, Metrology and Failure Analysis Portfolio.</span><span class="footer-permissions">Images, diagrams, microscopy results, and technical visuals are included to document research experience and project contributions. Please request permission before reuse, reproduction, or redistribution.</span></div><img class="visitor-badge" src="https://hits.sh/Pavanbabu-014.github.io.svg?label=Visitors&color=3f3833&labelColor=ebe4da" alt="Visitor count"></div></footer>
   <button class="to-top" aria-label="Back to top">&uarr;</button>
   <dialog id="projectModal"><div class="modal-body"><div class="modal-top"><div><p class="eyebrow" id="modalLabel">Project</p><h3 id="modalTitle">Project details</h3></div><button class="close" type="button" aria-label="Close dialog">&times;</button></div><div id="modalContent"></div></div></dialog>
   <dialog id="quickMenuModal" class="quick-menu-dialog">
@@ -456,6 +463,10 @@
         <button class="quick-menu-action" id="openSponsorsFromMenu" type="button">
           <span>Collaborators &amp; Sponsors</span>
           <small>Funding, partners, and ecosystem organizations</small>
+        </button>
+        <button class="quick-menu-action" id="openPermissionsFromMenu" type="button">
+          <span>Image Use &amp; Permissions</span>
+          <small>Request permission before reusing research visuals</small>
         </button>
       </div>
     </div>
@@ -502,6 +513,20 @@
       <p class="sponsor-note">Logos are shown for identification of collaborators, sponsors, and ecosystem organizations.</p>
     </div>
   </dialog>
+  <dialog id="permissionsModal" class="permissions-dialog">
+    <div class="permissions-modal">
+      <div class="modal-top">
+        <div><p class="eyebrow">Permissions</p><h3>Image use and research visuals.</h3></div>
+        <button class="close permissions-close" type="button" aria-label="Close permissions dialog">&times;</button>
+      </div>
+      <div class="permissions-card">
+        <p><strong>Images, diagrams, microscopy results, process flows, and technical visuals on this portfolio are provided as evidence of research experience and project contributions.</strong></p>
+        <p>Please contact Pavanbabu Arjunamahanthi before copying, reproducing, redistributing, presenting, or otherwise using visual material from this website.</p>
+        <p>&copy; <span id="permissionsYear"></span> Pavanbabu Arjunamahanthi. Visual materials may not be reused without permission unless a source or license states otherwise.</p>
+        <a class="btn accent" href="mailto:pavanbabuarjunamahanthi@gmail.com">Request permission</a>
+      </div>
+    </div>
+  </dialog>
   <script>
     const menu=document.querySelector('.menu'), navLinks=document.querySelector('.nav-links');
     menu?.addEventListener('click',()=>{const open=navLinks.classList.toggle('open');menu.setAttribute('aria-expanded',open)});
@@ -512,16 +537,19 @@
     publicationsDialog?.querySelector('.publications-close')?.addEventListener('click',()=>{publicationsDialog.close();if(location.hash==='#publications')history.replaceState(null,'',location.pathname+location.search)});
     publicationsDialog?.addEventListener('click',e=>{const rect=publicationsDialog.getBoundingClientRect(); if(e.clientX<rect.left||e.clientX>rect.right||e.clientY<rect.top||e.clientY>rect.bottom){publicationsDialog.close();if(location.hash==='#publications')history.replaceState(null,'',location.pathname+location.search)}});
     if(location.hash==='#publications') setTimeout(openPublications,0);
-    const sponsorToggle=document.querySelector('.sponsor-toggle'), quickMenuModal=document.getElementById('quickMenuModal'), sponsorModal=document.getElementById('sponsorModal'), contactModal=document.getElementById('contactModal');
+    const sponsorToggle=document.querySelector('.sponsor-toggle'), quickMenuModal=document.getElementById('quickMenuModal'), sponsorModal=document.getElementById('sponsorModal'), contactModal=document.getElementById('contactModal'), permissionsModal=document.getElementById('permissionsModal');
     sponsorToggle?.addEventListener('click',()=>quickMenuModal?.showModal());
     quickMenuModal?.querySelector('.quick-menu-close')?.addEventListener('click',()=>quickMenuModal.close());
     quickMenuModal?.addEventListener('click',e=>{const rect=quickMenuModal.getBoundingClientRect(); if(e.clientX<rect.left||e.clientX>rect.right||e.clientY<rect.top||e.clientY>rect.bottom) quickMenuModal.close();});
     document.getElementById('openContactFromMenu')?.addEventListener('click',()=>{quickMenuModal?.close();contactModal?.showModal()});
     document.getElementById('openSponsorsFromMenu')?.addEventListener('click',()=>{quickMenuModal?.close();sponsorModal?.showModal()});
+    document.getElementById('openPermissionsFromMenu')?.addEventListener('click',()=>{quickMenuModal?.close();permissionsModal?.showModal()});
     contactModal?.querySelector('.contact-close')?.addEventListener('click',()=>contactModal.close());
     contactModal?.addEventListener('click',e=>{const rect=contactModal.getBoundingClientRect(); if(e.clientX<rect.left||e.clientX>rect.right||e.clientY<rect.top||e.clientY>rect.bottom) contactModal.close();});
     sponsorModal?.querySelector('.sponsor-close')?.addEventListener('click',()=>sponsorModal.close());
     sponsorModal?.addEventListener('click',e=>{const rect=sponsorModal.getBoundingClientRect(); if(e.clientX<rect.left||e.clientX>rect.right||e.clientY<rect.top||e.clientY>rect.bottom) sponsorModal.close();});
+    permissionsModal?.querySelector('.permissions-close')?.addEventListener('click',()=>permissionsModal.close());
+    permissionsModal?.addEventListener('click',e=>{const rect=permissionsModal.getBoundingClientRect(); if(e.clientX<rect.left||e.clientX>rect.right||e.clientY<rect.top||e.clientY>rect.bottom) permissionsModal.close();});
     const reveals=document.querySelectorAll('.reveal'); const rio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.12}); reveals.forEach(e=>rio.observe(e));
     const counters=document.querySelectorAll('[data-count]'); const cio=new IntersectionObserver(es=>es.forEach(entry=>{ if(!entry.isIntersecting)return; const el=entry.target,target=+el.dataset.count,suffix=el.dataset.suffix||''; let n=0; const step=Math.max(1,Math.ceil(target/72)); const t=setInterval(()=>{n+=step;if(n>=target){n=target;clearInterval(t)} el.textContent=n.toLocaleString()+suffix;},18); cio.unobserve(el); }),{threshold:.45}); counters.forEach(e=>cio.observe(e));
     document.querySelectorAll('.tab-btn').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));btn.classList.add('active');document.getElementById(btn.dataset.tab).classList.add('active');}));
@@ -558,6 +586,7 @@
     const copyEmail=async btn=>{try{await navigator.clipboard.writeText('pavanbabuarjunamahanthi@gmail.com');btn.textContent='Copied';}catch(e){location.href='mailto:pavanbabuarjunamahanthi@gmail.com'}};
     document.querySelectorAll('.copy-email').forEach(btn=>btn.addEventListener('click',e=>copyEmail(e.currentTarget)));
     document.getElementById('year').textContent=new Date().getFullYear();
+    document.getElementById('permissionsYear').textContent=new Date().getFullYear();
   </script>
 </body>
 </html>
