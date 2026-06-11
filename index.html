@@ -216,6 +216,7 @@
     .footer-copy{display:grid;gap:6px;max-width:920px}
     .footer-permissions{font-weight:750;color:#4d443d}
     .visitor-badge{height:20px;width:auto}
+    .visitor-badge-shell{display:inline-flex;align-items:center;min-height:20px;color:var(--muted);font-size:.78rem;font-weight:700}
     .to-top{position:fixed;right:18px;bottom:18px;width:46px;height:46px;border:1px solid var(--line);border-radius:50%;background:#20242a;color:white;font-weight:950;opacity:0;transform:translateY(8px);transition:.2s;cursor:pointer}
     .to-top.show{opacity:1;transform:none}
     .reveal{opacity:0;transform:translateY(16px);transition:.55s}
@@ -538,7 +539,7 @@
       </div>
     </section>
   </main>
-  <footer class="footer"><div class="wrap"><div class="footer-copy"><span>&copy; <span id="year"></span> Pavanbabu Arjunamahanthi &middot; Semiconductor Packaging, Metrology and Failure Analysis Portfolio.</span><span class="footer-permissions">Images, diagrams, microscopy results, and technical visuals are included to document research experience and project contributions. Please request permission before reuse, reproduction, or redistribution.</span></div><img class="visitor-badge" src="https://hits.sh/Pavanbabu-014.github.io.svg?label=Visitors&color=3f3833&labelColor=ebe4da" alt="Visitor count"></div></footer>
+  <footer class="footer"><div class="wrap"><div class="footer-copy"><span>&copy; <span id="year"></span> Pavanbabu Arjunamahanthi &middot; Semiconductor Packaging, Metrology and Failure Analysis Portfolio.</span><span class="footer-permissions">Images, diagrams, microscopy results, and technical visuals are included to document research experience and project contributions. Please request permission before reuse, reproduction, or redistribution.</span></div><span class="visitor-badge-shell" data-visitor-counter>Unique visitor tracking</span></div></footer>
   <button class="to-top" aria-label="Back to top">&uarr;</button>
   <dialog id="projectModal"><div class="modal-body"><div class="modal-top"><div><p class="eyebrow" id="modalLabel">Project</p><h3 id="modalTitle">Project details</h3></div><button class="close" type="button" aria-label="Close dialog">&times;</button></div><div id="modalContent"></div></div></dialog>
   <dialog id="quickMenuModal" class="quick-menu-dialog">
@@ -679,6 +680,26 @@
     document.querySelectorAll('.copy-email').forEach(btn=>btn.addEventListener('click',e=>copyEmail(e.currentTarget)));
     document.getElementById('year').textContent=new Date().getFullYear();
     document.getElementById('permissionsYear').textContent=new Date().getFullYear();
+    const visitorCounter=document.querySelector('[data-visitor-counter]');
+    if(visitorCounter){
+      const visitorKey='pavan-portfolio-unique-visitor-counted-v1';
+      const badgeUrl='https://hits.sh/Pavanbabu-014.github.io.svg?label=Unique%20visitors&color=3f3833&labelColor=ebe4da';
+      let alreadyCounted=false;
+      try{alreadyCounted=localStorage.getItem(visitorKey)==='true'}catch(e){}
+      if(alreadyCounted){
+        visitorCounter.textContent='Unique visitor tracked';
+      }else{
+        const badge=new Image();
+        badge.className='visitor-badge';
+        badge.alt='Unique visitor count';
+        badge.decoding='async';
+        badge.loading='lazy';
+        badge.referrerPolicy='no-referrer';
+        badge.src=badgeUrl;
+        visitorCounter.replaceChildren(badge);
+        try{localStorage.setItem(visitorKey,'true')}catch(e){}
+      }
+    }
   </script>
 </body>
 </html>
