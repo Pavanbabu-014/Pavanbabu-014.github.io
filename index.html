@@ -347,8 +347,24 @@
     .motion-track span:nth-child(3n){color:#7c8a91}
     .motion-rail:hover .motion-track{animation-play-state:paused}
     @keyframes metrologyTicker{to{transform:translateX(-50%)}}
+    .media-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+    .media-card{border:1px solid var(--line);background:#ffffff;border-radius:22px;padding:22px;box-shadow:var(--softshadow);display:flex;flex-direction:column;gap:12px;min-height:230px;transition:.22s}
+    .media-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:#bfb2a4}
+    .media-preview{position:relative;margin:-6px -6px 4px;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--soft);aspect-ratio:16/9}
+    .media-preview img{width:100%;height:100%;object-fit:cover}
+    .media-preview.contain img{object-fit:contain;background:#fff}
+    .media-preview .play-badge{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:#ff0000;color:#fff;box-shadow:0 14px 34px rgba(0,0,0,.24)}
+    .media-preview .play-badge svg{width:25px;height:25px;margin-left:3px}
+    .media-type{display:inline-flex;align-items:center;gap:8px;color:var(--blue);font-size:.78rem;text-transform:uppercase;letter-spacing:.12em;font-weight:950}
+    .media-icon{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;background:var(--soft);color:var(--accent);font-weight:950}
+    .media-icon svg{width:24px;height:24px;display:block}
+    .media-icon.article{background:#eaf2ff;color:#2563eb}
+    .media-icon.youtube{background:#fff0f0;color:#ff0000}
+    .media-card h3{font-size:1.32rem;line-height:1.18;letter-spacing:-.035em;margin:0}
+    .media-card p{color:var(--muted);margin:0}
+    .media-card .paper-link{margin-top:auto;align-self:flex-start}
     @media(max-width:1100px){.hero-title-visual{grid-template-columns:1fr}.inspection-motion{width:150px;max-width:40%;margin:0 0 4px auto}}
-    @media(max-width:640px){.inspection-motion{width:132px;max-width:54%;margin:0 auto 6px}.hero-cta-strip{flex-wrap:wrap;white-space:normal;overflow:visible}.hero-cta-strip .btn,.hero-cta-strip .pill{width:100%}.motion-rail{border-radius:18px}.motion-track{gap:24px;animation-duration:22s}}
+    @media(max-width:640px){.inspection-motion{width:132px;max-width:54%;margin:0 auto 6px}.hero-cta-strip{flex-wrap:wrap;white-space:normal;overflow:visible}.hero-cta-strip .btn,.hero-cta-strip .pill{width:100%}.motion-rail{border-radius:18px}.motion-track{gap:24px;animation-duration:22s}.media-grid{grid-template-columns:1fr}}
     @media(prefers-reduced-motion:reduce){.motion-track,.scan-line,.scan-glow,.inspection-dot,.signal-wave{animation:none!important}.reveal{transition:none}}
   </style>
 </head>
@@ -359,7 +375,7 @@
       <a class="brand" href="#top" aria-label="Pavanbabu Arjunamahanthi home"><span class="mark">PA</span><span><strong>Pavanbabu Arjunamahanthi</strong><span>Semiconductor Packaging &middot; Metrology &middot; FA</span></span></a>
       <button class="menu" type="button" aria-expanded="false">Menu</button>
       <div class="nav-links">
-        <a href="#affiliations">About</a><a href="#experience">Experience</a><a href="#technical-skills">Skills</a><a href="#projects">Projects</a><a href="#publications">Publications</a><a href="#awards">Awards</a>
+        <a href="#affiliations">About</a><a href="#experience">Experience</a><a href="#technical-skills">Skills</a><a href="#projects">Projects</a><a href="#publications">Publications</a><a href="#awards">Awards</a><a href="#media">Media</a>
       </div>
       <div class="nav-tools" aria-label="Quick actions">
         <div class="sponsor-nav">
@@ -474,7 +490,7 @@
         <div class="cards reveal">
           <article class="project" data-category="metrology data"><img class="project-figure" src="assets/hybrid-inspection-crop.jpg" alt="SEM hybrid bonding inspection montage showing delamination and misalignment"><span class="mini">Metrology + AI</span><h3>Hybrid bonding cross-section workflow</h3><p>Reproducible metallographic preparation for sub-5 &micro;m hybrid bonding interfaces with reduced artifacts and clearer SEM inspection.</p><button class="btn secondary small" data-modal="hb">View details</button></article>
           <article class="project" data-category="metrology data"><span class="mini">SAM inspection</span><h3>Microbump fingerprinting</h3><p>Automated segmentation and statistical analysis of over 20,000 microbumps across 450 SAM images from advanced packages.</p><button class="btn secondary small" data-modal="sam">View details</button></article>
-          <article class="project" data-category="security"><img class="project-figure contain" src="assets/hardware-security-contributions.png" alt="Hardware security project contributions summary across MEMS secure PCB, SiPh fingerprinting, and NEMS advanced packaging"><span class="mini">Hardware security</span><h3>MEMS-enabled secure interconnects</h3><p>MEMS-based obfuscation and physical assurance concepts for resisting imaging, probing, and reverse-engineering attacks.</p><button class="btn secondary small" data-modal="mems">View details</button></article>
+          <article class="project" data-category="security"><img class="project-figure contain" src="assets/hardware-security-contributions.png" alt="Hardware security project contributions summary across MEMS secure PCB, SiPh fingerprinting, and NEMS advanced packaging"><span class="mini">Hardware security</span><h3>Physical Assurance of Microelectronics</h3><p>MEMS-based obfuscation and physical assurance concepts for resisting imaging, probing, and reverse-engineering attacks.</p><button class="btn secondary small" data-modal="mems">View details</button></article>
           <article class="project" data-category="fabrication"><img class="project-figure" src="assets/fabrication-working-photos-crop.jpg" alt="Cleanroom fabrication working photos"><span class="mini">Cleanroom</span><h3>PN diode and bi-morph MEMS actuator</h3><p>Fabricated and characterized wafer-level devices using lithography, etching, deposition, plasma cleaning, and electrical testing.</p><button class="btn secondary small" data-modal="fab">View details</button></article>
           <article class="project" data-category="metrology"><img class="project-figure contain" src="assets/glass-interposer-challenges.png" alt="Glass based interposer and substrate challenges diagram"><span class="mini">Glass substrates</span><h3>Glass interposer and TGV inspection</h3><p>Inspection strategy for warpage, cracks, roughness, voids, via-fill non-uniformity, and substrate-originated reliability risks.</p><button class="btn secondary small" data-modal="glass">View details</button></article>
           <article class="project" data-category="data metrology"><img class="project-figure contain" src="assets/hybrid-taxonomy-crop.jpg" alt="Hybrid bonding defect taxonomy table from electron microscopy observations"><span class="mini">Defect taxonomy</span><h3>Hybrid bonding defect classification</h3><p>Structured interface defect classes across Cu&ndash;Cu, dielectric&ndash;dielectric, barrier, Cu&ndash;dielectric, and related failure modes.</p><button class="btn secondary small" data-modal="tax">View details</button></article>
@@ -535,6 +551,26 @@
             <h3>Best Practical and Applications-Based Knowledge category award</h3>
             <p>Issued by SMTA International and received for the paper <a class="pub-title" href="https://www.researchgate.net/publication/400655986_The_Future_of_Electronics_Packaging_is_Chiplet_Architecture" target="_blank" rel="noopener noreferrer">The Future of Electronics Packaging Is Chiplet Architecture</a>.</p>
           </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="wrap" id="media">
+      <div class="section-head reveal"><div><p class="eyebrow">Media featured</p><h2>Featured coverage and presentation.</h2></div></div>
+      <div class="media-grid reveal">
+        <article class="media-card">
+          <figure class="media-preview"><img src="assets/media-article-chiplet.png" alt="Preview of Semiconductor Digest article about NHanced Semiconductors and University of Florida chiplet paper"></figure>
+          <div class="media-type"><span class="media-icon article"><svg class="btn-icon line" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l3 3v15H6z"></path><path d="M15 3v4h4"></path><path d="M8.5 11h7"></path><path d="M8.5 15h7"></path><path d="M8.5 19h4"></path></svg></span><span>Article feature</span></div>
+          <h3>NHanced Semiconductors &amp; University of Florida to present chiplet paper at 36th Electronics Packaging Symposium</h3>
+          <p>Semiconductor Digest coverage highlighting the chiplet architecture paper and electronics packaging symposium presentation.</p>
+          <a class="paper-link" href="https://www.semiconductor-digest.com/nhanced-semiconductors-university-of-florida-to-present-chiplet-paper-at-36th-electronics-packaging-symposium/" target="_blank" rel="noopener noreferrer">Read article</a>
+        </article>
+        <article class="media-card">
+          <figure class="media-preview"><img src="assets/media-youtube-chiplet.jpg" alt="Preview thumbnail for YouTube video feature"><span class="play-badge" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M8 5v14l11-7z"></path></svg></span></figure>
+          <div class="media-type"><span class="media-icon youtube"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21.6 7.2a3 3 0 0 0-2.1-2.1C17.7 4.6 12 4.6 12 4.6s-5.7 0-7.5.5a3 3 0 0 0-2.1 2.1A31 31 0 0 0 2 12a31 31 0 0 0 .4 4.8 3 3 0 0 0 2.1 2.1c1.8.5 7.5.5 7.5.5s5.7 0 7.5-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 22 12a31 31 0 0 0-.4-4.8z"></path><path fill="#fff" d="m10 15.4 5.2-3.4L10 8.6z"></path></svg></span><span>YouTube feature</span></div>
+          <h3>Video presentation and discussion</h3>
+          <p>YouTube feature connected to advanced packaging, chiplets, and research communication for a broader technical audience.</p>
+          <a class="paper-link" href="https://youtu.be/mIbcYMA5LLo?si=HuasdkejYcksv5hM" target="_blank" rel="noopener noreferrer">Watch video</a>
         </article>
       </div>
     </section>
@@ -659,7 +695,7 @@
         ]
       },
       sam:{title:'SAM imaging and microbump fingerprinting',context:'Automated imaging-analysis pipeline for advanced packages, built around segmentation, statistical microbump analysis, imaging-condition comparison, void and delamination identification, and inspection feedback.',points:['Maps acoustic signatures into measurable microbump statistics.','Supports faster review of large SAM image sets.']},
-      mems:{title:'MEMS-enabled secure interconnects',context:'Reconfigurable MEMS-based obfuscation concepts for secure PCB and substrate interconnects, with attention to non-destructive inspection limits and anti-probing assurance.',points:['Connects hardware security goals with package-level inspection constraints.','Frames MEMS structures as active assurance features.'],images:[{src:'assets/hardware-security-contributions.png',alt:'Hardware security project contributions summary across MEMS secure PCB, SiPh fingerprinting, and NEMS advanced packaging',caption:'Hardware security contributions spanning MEMS-enabled secure PCB supply chain, SiPh fingerprinting, and NEMS-based advanced packaging assurance.'}]},
+      mems:{title:'Physical Assurance of Microelectronics',context:'Reconfigurable MEMS-based obfuscation concepts for secure PCB and substrate interconnects, with attention to non-destructive inspection limits and anti-probing assurance.',points:['Connects hardware security goals with package-level inspection constraints.','Frames MEMS structures as active assurance features.'],images:[{src:'assets/hardware-security-contributions.png',alt:'Hardware security project contributions summary across MEMS secure PCB, SiPh fingerprinting, and NEMS advanced packaging',caption:'Hardware security contributions spanning MEMS-enabled secure PCB supply chain, SiPh fingerprinting, and NEMS-based advanced packaging assurance.'}]},
       fab:{title:'Semiconductor device and MEMS fabrication',context:'Fabrication of PN junction diode and bi-morph MEMS actuator using lithography, wet and dry etch, diffusion, doping, evaporation, plasma cleaning, PECVD, ALD, DRIE, and device characterization.',points:['Hands-on cleanroom process execution from patterning through characterization.','Documents the fabrication environment and wafer-level work.'],images:[{src:'assets/fabrication-working-photos-crop.jpg',alt:'Cleanroom fabrication working photos',caption:'Working photos from fabrication and wafer-process experience.'}]},
       glass:{title:'Glass interposer and TGV inspection',context:'Metrology review and inspection strategy for glass substrate reliability risks including warpage, cracks, sidewall roughness, voiding, via-fill non-uniformity, and substrate-originated failure modes.',points:['Connects substrate-level defects to downstream package reliability.','Emphasizes inspection planning across optical, acoustic, X-ray, and surface methods.'],images:[{src:'assets/glass-interposer-challenges.png',alt:'Glass based interposer and substrate challenges diagram',caption:'Glass based interposer and substrate challenges: CTE mismatch, fragility, warpage, seaware, dicing variation, TGV wet-etch variation, and yield impact.'}]},
       tax:{title:'Hybrid bonding defect taxonomy',context:'Structured interfacial defect taxonomy for inspection and AI-driven classification across Cu&ndash;Cu, dielectric&ndash;dielectric, barrier&ndash;barrier, Cu&ndash;barrier, Cu&ndash;dielectric, and dielectric&ndash;barrier interfaces.',points:['Gives reviewers a vocabulary for defect origin and inspection labels.','Useful for training datasets, inspection reports, and process-learning loops.'],images:[{src:'assets/hybrid-taxonomy-crop.jpg',alt:'Hybrid bonding defect taxonomy table from electron microscopy observations',caption:'Hybrid bonding defect taxonomy organized by interface type and likely root cause.'}]}
